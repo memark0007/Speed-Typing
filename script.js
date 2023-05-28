@@ -9,14 +9,14 @@ const levelFormEl = document.getElementById('level-form')
 const levelEl = document.getElementById('level')
 const gameOverEl = document.getElementById('gameover-container')
 
-const words = ['one', 'two', 'tree']
+const words = ["Effervescent", "labyrinthine", "serendipity", "mellifluous", "ephemeral", "quintessential", "nebulous", "serenity", "cascade", "ethereal", "ineffable", "resplendent", "harmonious", "clandestine", "whimsical", "luminescent", "clandestine", "verdant", "euphoria", "ebullient", "evanescent", "mellifluous", "idyllic", "reverie", "whimsical", "incandescent", "sonorous", "enigma", "clandestine", "halcyon", "elysian", "iridescent", "mellifluous", "zephyr", "effervescent", "nebulous", "serenity", "cascade", "ethereal", "ineffable", "resplendent", "harmonious", "clandestine", "whimsical", "luminescent", "clandestine", "verdant", "euphoria", "ebullient", "evanescent", "mellifluous", "idyllic", "reverie", "whimsical", "incandescent", "sonorous", "enigma", "clandestine", "halcyon", "elysian", "iridescent", "mellifluous", "zephyr", "effervescent", "nebulous", "serenity", "cascade", "ethereal", "ineffable", "resplendent", "harmonious", "clandestine", "whimsical", "luminescent", "clandestine", "verdant", "euphoria", "ebullient", "evanescent", "mellifluous", "idyllic", "reverie", "whimsical", "incandescent", "sonorous", "enigma", "clandestine", "halcyon", "elysian", "iridescent", "mellifluous", "zephyr"]
 let randomWord;
 let score = 0;
 let time = 15;
 
 let level = 'medium'
 
-const saveMode= localStorage.getItem("mode") !== null? localStorage.getItem('mode') :'medium'
+const saveMode = localStorage.getItem("mode") !== null ? localStorage.getItem('mode') : 'medium'
 
 const timeInterval = setInterval(() => {
     updateTime()
@@ -35,13 +35,13 @@ textEl.addEventListener('input', e => {
     const inputText = e.target.value
 
     if (inputText === randomWord) {
-            if(saveMode== 'easy'){
-        time += 4
-    }else if(saveMode == 'medium'){
-        time += 3
-    }else{
-        time += 2
-    }
+        if (saveMode == 'easy') {
+            time += 4
+        } else if (saveMode == 'medium') {
+            time += 3
+        } else {
+            time += 2
+        }
         displayWordToUI()
         updateScore()
         e.target.value = ''
@@ -63,22 +63,22 @@ function gameOver() {
     gameOverEl.innerHTML = '<h1>จบเกมแล้วนะครับ</h1><p>คะแนนของคุณ = ' + score + ' คะแนน</p> <button onclick="location.reload()">เล่นอีกครั้ง</button>'
     gameOverEl.style.display = 'flex'
 }
-btnLevelEl.addEventListener('click', ()=>{
+btnLevelEl.addEventListener('click', () => {
     settingsEl.classList.toggle('hide')
 })
 
-levelEl.addEventListener('change',(e)=>{
-    level=e.target.value
+levelEl.addEventListener('change', (e) => {
+    level = e.target.value
     localStorage.setItem("mode", level)
 })
 
-function startGame(){
+function startGame() {
     levelEl.value = saveMode
-    if(saveMode== 'easy'){
+    if (saveMode == 'easy') {
         time = 15
-    }else if(saveMode == 'medium'){
+    } else if (saveMode == 'medium') {
         time = 10
-    }else{
+    } else {
         time = 5
     }
     displayWordToUI()
